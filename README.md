@@ -11,6 +11,9 @@ The actual work each promotion runs lives in
 tofu writes a config bundle to OpenBao, then Flux applies the tenant's `podinfo` app +
 its cert-manager Certificate + nginx Ingress. The tag here is just the input.
 
+> The fleet keeps tofu **state in git**, so a version bump plans a **destroy/replace** —
+> shown in each prod PR for review before merge.
+
 ## How it's used
 - Kargo's `tenant-platform` Warehouse watches this repo's **SemVer tags** → Freight.
 - Tagging a new version **kicks off a fleet rollout** (canary first, then prod via PR).
